@@ -1,12 +1,8 @@
 // =============================================================================
 // Kweave Compute Source — Utility functions for Kweave-generated PCG GPU nodes.
+// KWEAVE_CS_VERSION 1
 //
-// To use Kweave graphs that reference these functions:
-//   1. Create a new PCG Compute Source asset in your UE project
-//   2. Paste this entire file as the source
-//   3. Note the asset path (e.g. /Game/PCG/ComputeSources/KweaveUtils)
-//   4. Reference it in your PCG Custom HLSL node's Additional Sources
-//
+// Managed by Kweave — do not edit manually if using the Kweave Bridge.
 // These functions are prefixed with "Kweave" to avoid name collisions.
 // =============================================================================
 
