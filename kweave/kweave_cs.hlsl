@@ -1,8 +1,8 @@
 // =============================================================================
-// Kweave Compute Source — Utility functions for Kweave-generated PCG GPU nodes.
+// Kweave Compute Source -- Utility functions for Kweave-generated PCG GPU nodes.
 // KWEAVE_CS_VERSION 1
 //
-// Managed by Kweave — do not edit manually if using the Kweave Bridge.
+// Managed by Kweave -- do not edit manually if using the Kweave Bridge.
 // These functions are prefixed with "Kweave" to avoid name collisions.
 // =============================================================================
 
