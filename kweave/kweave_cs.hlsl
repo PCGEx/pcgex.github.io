@@ -1,10 +1,35 @@
 // =============================================================================
 // Kweave Compute Source -- Utility functions for Kweave-generated PCG GPU nodes.
-// KWEAVE_CS_VERSION 1
+// KWEAVE_CS_VERSION 2
 //
 // Managed by Kweave -- do not edit manually if using the Kweave Bridge.
 // These functions are prefixed with "Kweave" to avoid name collisions.
 // =============================================================================
+
+// --- Chebyshev (L∞) distance ---
+// Maximum absolute per-component difference.
+float KweaveChebyshevDistance(float A, float B)
+{
+    return abs(A - B);
+}
+
+float KweaveChebyshevDistance(float2 A, float2 B)
+{
+    float2 D = abs(A - B);
+    return max(D.x, D.y);
+}
+
+float KweaveChebyshevDistance(float3 A, float3 B)
+{
+    float3 D = abs(A - B);
+    return max(D.x, max(D.y, D.z));
+}
+
+float KweaveChebyshevDistance(float4 A, float4 B)
+{
+    float4 D = abs(A - B);
+    return max(max(D.x, D.y), max(D.z, D.w));
+}
 
 // --- Quaternion Slerp ---
 // Spherical linear interpolation between two unit quaternions.
