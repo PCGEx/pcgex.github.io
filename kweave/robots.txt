@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /kweave/
+Sitemap: https://pcgex.github.io/kweave/sitemap.xml
