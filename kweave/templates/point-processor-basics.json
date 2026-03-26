@@ -1,0 +1,31 @@
+{
+  "kernelType": "PointProcessor",
+  "content": {
+    "nodes": [
+      {
+        "id": "tpl_get1",
+        "type": "data/get",
+        "position": { "x": 100, "y": 150 },
+        "data": { "label": "Get In", "dataAccessor": "get", "pinId": null, "enabledAccessors": ["position"], "enabledAttributes": [] }
+      },
+      {
+        "id": "tpl_set1",
+        "type": "data/set",
+        "position": { "x": 500, "y": 150 },
+        "data": { "label": "Set Out", "dataAccessor": "set", "pinId": null, "enabledAccessors": ["position"], "enabledAttributes": [] }
+      }
+    ],
+    "edges": [
+      {
+        "id": "tpl_e1",
+        "source": "tpl_get1",
+        "sourceHandle": "position",
+        "target": "tpl_set1",
+        "targetHandle": "position"
+      }
+    ],
+    "pinConfigs": []
+  },
+  "functions": [],
+  "libraryRefs": []
+}
