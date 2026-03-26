@@ -1,20 +1,12 @@
 {
   "templates": [
     {
-      "id": "point-processor-basics",
-      "name": "Point Processor Basics",
-      "description": "Get and set point attributes with a simple read-modify-write chain.",
-      "file": "point-processor-basics.json",
+      "id": "generate-points-landscape",
+      "name": "Generate Points (Landscape)",
+      "description": "Generate points and fit them to the landscape.",
+      "file": "generate-points-landscape.json",
       "type": "graph",
-      "kernelType": "PointProcessor"
-    },
-    {
-      "id": "match-and-set",
-      "name": "Match & Set",
-      "description": "Use a match node to look up data from a secondary pin and apply it.",
-      "file": "match-and-set.json",
-      "type": "graph",
-      "kernelType": "PointProcessor"
+      "kernelType": "PointGenerator"
     }
   ]
 }

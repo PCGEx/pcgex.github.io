@@ -1,0 +1,1565 @@
+{
+  "id": "e0c2055045e2",
+  "codegenId": "55aac60f003c",
+  "type": "graph",
+  "name": "Generate Points (Landscape)",
+  "author": "",
+  "origin": "local",
+  "version": 1,
+  "createdAt": 1774532942978,
+  "modifiedAt": 1774538122167,
+  "content": {
+    "nodes": [
+      {
+        "id": "n-6b1dcf9fc677",
+        "type": "data/get",
+        "position": {
+          "x": -40,
+          "y": 720
+        },
+        "data": {
+          "label": "Data Get",
+          "inputs": [
+            {
+              "id": "elementIndex",
+              "label": "Element Index",
+              "hlslType": "uint",
+              "hlslDefault": "ElementIndex",
+              "pinScoped": false,
+              "implicit": true
+            },
+            {
+              "id": "elementXY",
+              "label": "Element Index (XY)",
+              "hlslType": "uint2",
+              "pinScoped": false,
+              "implicit": true
+            },
+            {
+              "id": "arrayIndex",
+              "label": "Array Index",
+              "hlslType": "uint",
+              "pinScoped": false,
+              "implicit": true
+            }
+          ],
+          "outputs": [],
+          "dataAccessor": "get",
+          "enabledAttributes": [],
+          "pinId": "p-48fe9ef15edf",
+          "enabledAccessors": [
+            "height",
+            "normal",
+            "baseColor"
+          ]
+        },
+        "measured": {
+          "width": 172,
+          "height": 105
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "n-d9f5958a7baf",
+        "type": "data/set",
+        "position": {
+          "x": 230,
+          "y": 1170
+        },
+        "data": {
+          "label": "Data Set",
+          "inputs": [
+            {
+              "id": "exec_in",
+              "label": "",
+              "hlslType": "exec"
+            },
+            {
+              "id": "elementIndex",
+              "label": "Element Index",
+              "hlslType": "uint",
+              "hlslDefault": "ElementIndex",
+              "pinScoped": false,
+              "implicit": true
+            },
+            {
+              "id": "elementXY",
+              "label": "Element Index (XY)",
+              "hlslType": "uint2",
+              "pinScoped": false,
+              "implicit": true
+            },
+            {
+              "id": "arrayIndex",
+              "label": "Array Index",
+              "hlslType": "uint",
+              "pinScoped": false,
+              "implicit": true
+            }
+          ],
+          "outputs": [
+            {
+              "id": "exec_out",
+              "label": "",
+              "hlslType": "exec"
+            }
+          ],
+          "dataAccessor": "set",
+          "enabledAttributes": [],
+          "pinId": "p-e92075fd125f",
+          "enabledAccessors": [
+            "position",
+            "rotation",
+            "scale"
+          ]
+        },
+        "measured": {
+          "width": 140,
+          "height": 125
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "n-d645070b1143",
+        "type": "cs/call",
+        "position": {
+          "x": -330,
+          "y": 720
+        },
+        "data": {
+          "label": "Create Grid 2D",
+          "inputs": [
+            {
+              "id": "ElementIndex",
+              "label": "ElementIndex",
+              "hlslType": "uint"
+            },
+            {
+              "id": "NumPoints",
+              "label": "NumPoints",
+              "hlslType": "uint"
+            },
+            {
+              "id": "Min",
+              "label": "Min",
+              "hlslType": "float3"
+            },
+            {
+              "id": "Max",
+              "label": "Max",
+              "hlslType": "float3"
+            }
+          ],
+          "outputs": [
+            {
+              "id": "result",
+              "label": "result",
+              "hlslType": "float3"
+            }
+          ],
+          "sourceId": "native:pcgcs_shaderutils",
+          "sourceName": "PCGCS_ShaderUtils",
+          "sourceAssetPath": "/PCG/ComputeSources/PCGCS_ShaderUtils.PCGCS_ShaderUtils",
+          "functionName": "CreateGrid2D",
+          "overloads": [
+            {
+              "returnType": "float3",
+              "params": [
+                {
+                  "name": "ElementIndex",
+                  "hlslType": "uint"
+                },
+                {
+                  "name": "NumPoints",
+                  "hlslType": "uint"
+                },
+                {
+                  "name": "NumX",
+                  "hlslType": "uint"
+                },
+                {
+                  "name": "Min",
+                  "hlslType": "float3"
+                },
+                {
+                  "name": "Max",
+                  "hlslType": "float3"
+                }
+              ]
+            },
+            {
+              "returnType": "float3",
+              "params": [
+                {
+                  "name": "ElementIndex",
+                  "hlslType": "uint"
+                },
+                {
+                  "name": "NumPoints",
+                  "hlslType": "uint"
+                },
+                {
+                  "name": "Min",
+                  "hlslType": "float3"
+                },
+                {
+                  "name": "Max",
+                  "hlslType": "float3"
+                }
+              ]
+            }
+          ],
+          "overloadIndex": 1,
+          "returnType": "float3",
+          "params": [
+            {
+              "name": "ElementIndex",
+              "hlslType": "uint"
+            },
+            {
+              "name": "NumPoints",
+              "hlslType": "uint"
+            },
+            {
+              "name": "Min",
+              "hlslType": "float3"
+            },
+            {
+              "name": "Max",
+              "hlslType": "float3"
+            }
+          ]
+        },
+        "measured": {
+          "width": 141,
+          "height": 125
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "n-ff33c003eb48",
+        "type": "pcg/component_bounds",
+        "position": {
+          "x": -550,
+          "y": 820
+        },
+        "data": {
+          "label": "Component Bounds",
+          "inputs": [],
+          "outputs": [
+            {
+              "id": "min",
+              "label": "Min",
+              "hlslType": "float3"
+            },
+            {
+              "id": "max",
+              "label": "Max",
+              "hlslType": "float3"
+            },
+            {
+              "id": "center",
+              "label": "Center",
+              "hlslType": "float3"
+            }
+          ]
+        },
+        "measured": {
+          "width": 156,
+          "height": 105
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "n-8aef66b9f374",
+        "type": "const/num_elements",
+        "position": {
+          "x": -560,
+          "y": 740
+        },
+        "data": {
+          "label": "Num Elements",
+          "inputs": [],
+          "outputs": [
+            {
+              "id": "value",
+              "label": "Value",
+              "hlslType": "uint"
+            },
+            {
+              "id": "arraySize",
+              "label": "Array Size",
+              "hlslType": "uint"
+            }
+          ],
+          "pinId": "p-e92075fd125f"
+        },
+        "measured": {
+          "width": 170,
+          "height": 65
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "n-c31f1fb5d848",
+        "type": "named_reroute_in",
+        "position": {
+          "x": 430,
+          "y": 710
+        },
+        "data": {
+          "label": "Named Reroute In",
+          "inputs": [
+            {
+              "id": "in",
+              "label": "",
+              "hlslType": "any"
+            }
+          ],
+          "outputs": [
+            {
+              "id": "out",
+              "label": "",
+              "hlslType": "any"
+            }
+          ],
+          "channelId": "5dcb55ed5a51",
+          "channelLabel": "WP",
+          "channelColor": "#a78bfa"
+        },
+        "measured": {
+          "width": 51,
+          "height": 31
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "n-7f56f3fd82d9",
+        "type": "math/vecscalar",
+        "position": {
+          "x": 290,
+          "y": 800
+        },
+        "data": {
+          "label": "Dot",
+          "inputs": [
+            {
+              "id": "a",
+              "label": "A",
+              "hlslType": "numeric"
+            },
+            {
+              "id": "b",
+              "label": "B",
+              "hlslType": "numeric"
+            }
+          ],
+          "outputs": [
+            {
+              "id": "result",
+              "label": "Result",
+              "hlslType": "float"
+            }
+          ],
+          "op": "dot"
+        },
+        "measured": {
+          "width": 140,
+          "height": 85
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "n-2b0d265471c6",
+        "type": "const/float3",
+        "position": {
+          "x": -40,
+          "y": 880
+        },
+        "data": {
+          "label": "Float3",
+          "inputs": [
+            {
+              "id": "x",
+              "label": "X",
+              "hlslType": "float"
+            },
+            {
+              "id": "y",
+              "label": "Y",
+              "hlslType": "float"
+            },
+            {
+              "id": "z",
+              "label": "Z",
+              "hlslType": "float"
+            }
+          ],
+          "outputs": [
+            {
+              "id": "value",
+              "label": "Value",
+              "hlslType": "float3"
+            }
+          ],
+          "x": 0,
+          "y": 0,
+          "z": 1
+        },
+        "measured": {
+          "width": 180,
+          "height": 105
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "n-7e4061d0fe67",
+        "type": "branch/ifBegin",
+        "position": {
+          "x": -330,
+          "y": 1170
+        },
+        "data": {
+          "label": "If",
+          "inputs": [
+            {
+              "id": "exec_in",
+              "label": "",
+              "hlslType": "exec"
+            },
+            {
+              "id": "condition",
+              "label": "Condition",
+              "hlslType": "bool"
+            }
+          ],
+          "outputs": [
+            {
+              "id": "exec_out",
+              "label": "",
+              "hlslType": "exec"
+            }
+          ],
+          "branchId": "40c194202763",
+          "carries": [],
+          "branchColor": "#34d399",
+          "branchAttribute": ""
+        },
+        "measured": {
+          "width": 140,
+          "height": 65
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "n-be8ae6c44ec7",
+        "type": "branch/ifEnd",
+        "position": {
+          "x": 570,
+          "y": 1170
+        },
+        "data": {
+          "label": "End If",
+          "inputs": [],
+          "outputs": [],
+          "branchId": "40c194202763",
+          "carries": [],
+          "branchColor": "#34d399",
+          "hidden": true,
+          "hiddenAnchorId": "n-7e4061d0fe67",
+          "hiddenOffset": {
+            "x": 900,
+            "y": 0
+          }
+        },
+        "measured": {
+          "width": 140,
+          "height": 65
+        },
+        "selected": false,
+        "dragging": false,
+        "hidden": true
+      },
+      {
+        "id": "n-9d88610027ea",
+        "type": "branch/elseBegin",
+        "position": {
+          "x": -330,
+          "y": 1370
+        },
+        "data": {
+          "label": "Else",
+          "inputs": [],
+          "outputs": [
+            {
+              "id": "exec_out",
+              "label": "",
+              "hlslType": "exec"
+            }
+          ],
+          "branchId": "40c194202763",
+          "carries": [],
+          "branchColor": "#34d399"
+        },
+        "measured": {
+          "width": 140,
+          "height": 47
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "n-9c8ec4a542f8",
+        "type": "branch/elseEnd",
+        "position": {
+          "x": 570,
+          "y": 1270
+        },
+        "data": {
+          "label": "End Else",
+          "inputs": [],
+          "outputs": [],
+          "branchId": "40c194202763",
+          "carries": [],
+          "branchColor": "#34d399",
+          "hidden": true,
+          "hiddenAnchorId": "n-7e4061d0fe67",
+          "hiddenOffset": {
+            "x": 900,
+            "y": 100
+          }
+        },
+        "measured": {
+          "width": 140,
+          "height": 65
+        },
+        "selected": false,
+        "dragging": false,
+        "hidden": true
+      },
+      {
+        "id": "n-6444a528e216",
+        "type": "branch/end",
+        "position": {
+          "x": -330,
+          "y": 1460
+        },
+        "data": {
+          "label": "End Branch",
+          "inputs": [],
+          "outputs": [
+            {
+              "id": "exec_out",
+              "label": "",
+              "hlslType": "exec"
+            }
+          ],
+          "branchId": "40c194202763",
+          "carries": [],
+          "branchColor": "#34d399"
+        },
+        "measured": {
+          "width": 140,
+          "height": 47
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "n-b3e9b9e74b82",
+        "type": "vector/compose",
+        "position": {
+          "x": 220,
+          "y": 680
+        },
+        "data": {
+          "label": "Compose",
+          "inputs": [
+            {
+              "id": "c0",
+              "label": "X",
+              "hlslType": "numeric"
+            },
+            {
+              "id": "c1",
+              "label": "Y",
+              "hlslType": "numeric"
+            },
+            {
+              "id": "c2",
+              "label": "Z",
+              "hlslType": "numeric"
+            },
+            {
+              "id": "c3",
+              "label": "W",
+              "hlslType": "numeric"
+            }
+          ],
+          "outputs": [
+            {
+              "id": "result",
+              "label": "Result",
+              "hlslType": "float3"
+            }
+          ],
+          "outputType": "float3",
+          "x": 0,
+          "y": 0,
+          "z": 0,
+          "w": 0
+        },
+        "measured": {
+          "width": 180,
+          "height": 85
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "n-623b338d2460",
+        "type": "vector/mask",
+        "position": {
+          "x": -10,
+          "y": 630
+        },
+        "data": {
+          "label": "Mask",
+          "inputs": [
+            {
+              "id": "value",
+              "label": "Value",
+              "hlslType": "any"
+            }
+          ],
+          "outputs": [
+            {
+              "id": "result",
+              "label": "Result",
+              "hlslType": "float"
+            }
+          ],
+          "mask": [
+            true,
+            true,
+            false,
+            true
+          ]
+        },
+        "measured": {
+          "width": 140,
+          "height": 65
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "n-273538006e74",
+        "type": "named_reroute_in",
+        "position": {
+          "x": 630,
+          "y": 830
+        },
+        "data": {
+          "label": "Named Reroute In",
+          "inputs": [
+            {
+              "id": "in",
+              "label": "",
+              "hlslType": "any"
+            }
+          ],
+          "outputs": [
+            {
+              "id": "out",
+              "label": "",
+              "hlslType": "any"
+            }
+          ],
+          "channelId": "6b5fc91424b9",
+          "channelLabel": "IsFlat",
+          "channelColor": "#f43f5e"
+        },
+        "measured": {
+          "width": 60,
+          "height": 31
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "n-4771cb98ea84",
+        "type": "logic/compare",
+        "position": {
+          "x": 460,
+          "y": 800
+        },
+        "data": {
+          "label": "Greater Than",
+          "inputs": [
+            {
+              "id": "a",
+              "label": "A",
+              "hlslType": "numeric"
+            },
+            {
+              "id": "b",
+              "label": "B",
+              "hlslType": "numeric"
+            }
+          ],
+          "outputs": [
+            {
+              "id": "result",
+              "label": "Result",
+              "hlslType": "bool"
+            }
+          ],
+          "op": "gt",
+          "b": 0.9
+        },
+        "measured": {
+          "width": 142,
+          "height": 85
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "n-b06a9d480d30",
+        "type": "named_reroute_out",
+        "position": {
+          "x": -450,
+          "y": 1200
+        },
+        "data": {
+          "label": "Named Reroute Out",
+          "inputs": [],
+          "outputs": [
+            {
+              "id": "out",
+              "label": "",
+              "hlslType": "any"
+            }
+          ],
+          "channelId": "6b5fc91424b9",
+          "channelLabel": "IsFlat",
+          "channelColor": "#f43f5e"
+        },
+        "measured": {
+          "width": 72,
+          "height": 31
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "n-f813f86d056f",
+        "type": "point/remove",
+        "position": {
+          "x": -20,
+          "y": 1370
+        },
+        "data": {
+          "label": "Remove Point",
+          "inputs": [
+            {
+              "id": "exec_in",
+              "label": "",
+              "hlslType": "exec"
+            },
+            {
+              "id": "elementIndex",
+              "label": "Element Index",
+              "hlslType": "uint",
+              "hlslDefault": "ElementIndex",
+              "pinScoped": false,
+              "implicit": true
+            },
+            {
+              "id": "condition",
+              "label": "Condition",
+              "hlslType": "bool"
+            }
+          ],
+          "outputs": [
+            {
+              "id": "exec_out",
+              "label": "",
+              "hlslType": "exec"
+            }
+          ],
+          "condition": true,
+          "pinId": "p-e92075fd125f"
+        },
+        "measured": {
+          "width": 166,
+          "height": 85
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "n-67cb9e0c6d53",
+        "type": "named_reroute_out",
+        "position": {
+          "x": 130,
+          "y": 1220
+        },
+        "data": {
+          "label": "Named Reroute Out",
+          "inputs": [],
+          "outputs": [
+            {
+              "id": "out",
+              "label": "",
+              "hlslType": "any"
+            }
+          ],
+          "channelId": "5dcb55ed5a51",
+          "channelLabel": "WP",
+          "channelColor": "#a78bfa"
+        },
+        "measured": {
+          "width": 63,
+          "height": 31
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "n-438f25d18ce9",
+        "type": "named_reroute_in",
+        "position": {
+          "x": 420,
+          "y": 440
+        },
+        "data": {
+          "label": "Named Reroute In",
+          "inputs": [
+            {
+              "id": "in",
+              "label": "",
+              "hlslType": "any"
+            }
+          ],
+          "outputs": [
+            {
+              "id": "out",
+              "label": "",
+              "hlslType": "any"
+            }
+          ],
+          "channelId": "7634d9904fac",
+          "channelLabel": "WS",
+          "channelColor": "#a78bfa"
+        },
+        "measured": {
+          "width": 51,
+          "height": 31
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "n-1eea38e8087b",
+        "type": "const/float3",
+        "position": {
+          "x": 210,
+          "y": 410
+        },
+        "data": {
+          "label": "Float3",
+          "inputs": [
+            {
+              "id": "x",
+              "label": "X",
+              "hlslType": "float"
+            },
+            {
+              "id": "y",
+              "label": "Y",
+              "hlslType": "float"
+            },
+            {
+              "id": "z",
+              "label": "Z",
+              "hlslType": "float"
+            }
+          ],
+          "outputs": [
+            {
+              "id": "value",
+              "label": "Value",
+              "hlslType": "float3"
+            }
+          ],
+          "x": 0,
+          "y": 0.1,
+          "z": 0.1
+        },
+        "measured": {
+          "width": 180,
+          "height": 105
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "n-364df36f81a3",
+        "type": "named_reroute_out",
+        "position": {
+          "x": 130,
+          "y": 1260
+        },
+        "data": {
+          "label": "Named Reroute Out",
+          "inputs": [],
+          "outputs": [
+            {
+              "id": "out",
+              "label": "",
+              "hlslType": "any"
+            }
+          ],
+          "channelId": "7634d9904fac",
+          "channelLabel": "WS",
+          "channelColor": "#a78bfa"
+        },
+        "measured": {
+          "width": 63,
+          "height": 31
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "n-715c427dd745",
+        "type": "const/float",
+        "position": {
+          "x": 0,
+          "y": 430
+        },
+        "data": {
+          "label": "Float",
+          "inputs": [
+            {
+              "id": "x",
+              "label": "X",
+              "hlslType": "float"
+            }
+          ],
+          "outputs": [
+            {
+              "id": "value",
+              "label": "Value",
+              "hlslType": "float"
+            }
+          ],
+          "x": 0.5
+        },
+        "measured": {
+          "width": 180,
+          "height": 65
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "n-c82d63b0f91c",
+        "type": "cs/call",
+        "position": {
+          "x": -140,
+          "y": 1170
+        },
+        "data": {
+          "label": "Quat_From Normal",
+          "inputs": [
+            {
+              "id": "InNormal",
+              "label": "InNormal",
+              "hlslType": "float3"
+            }
+          ],
+          "outputs": [
+            {
+              "id": "result",
+              "label": "result",
+              "hlslType": "half4"
+            }
+          ],
+          "sourceId": "bridge:/PCG/ComputeSources/PCGCS_Quaternion",
+          "sourceName": "PCGCS_Quaternion",
+          "sourceAssetPath": "/PCG/ComputeSources/PCGCS_Quaternion",
+          "functionName": "Quat_FromNormal",
+          "overloads": [
+            {
+              "returnType": "half4",
+              "params": [
+                {
+                  "name": "InNormal",
+                  "hlslType": "float3"
+                }
+              ]
+            }
+          ],
+          "overloadIndex": 0,
+          "returnType": "half4",
+          "params": [
+            {
+              "name": "InNormal",
+              "hlslType": "float3"
+            }
+          ]
+        },
+        "measured": {
+          "width": 140,
+          "height": 65
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "n-98a0f95bb541",
+        "type": "named_reroute_in",
+        "position": {
+          "x": 60,
+          "y": 1240
+        },
+        "data": {
+          "label": "Named Reroute In",
+          "inputs": [
+            {
+              "id": "in",
+              "label": "",
+              "hlslType": "any"
+            }
+          ],
+          "outputs": [
+            {
+              "id": "out",
+              "label": "",
+              "hlslType": "any"
+            }
+          ],
+          "channelId": "b011781fa6e5",
+          "channelLabel": "WR",
+          "channelColor": "#eab308"
+        },
+        "measured": {
+          "width": 51,
+          "height": 31
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "n-f5d05dfe118d",
+        "type": "named_reroute_in",
+        "position": {
+          "x": 200,
+          "y": 830
+        },
+        "data": {
+          "label": "Named Reroute In",
+          "inputs": [
+            {
+              "id": "in",
+              "label": "",
+              "hlslType": "any"
+            }
+          ],
+          "outputs": [
+            {
+              "id": "out",
+              "label": "",
+              "hlslType": "any"
+            }
+          ],
+          "channelId": "d5d56ee1464a",
+          "channelLabel": "LSN",
+          "channelColor": "#a78bfa"
+        },
+        "measured": {
+          "width": 54,
+          "height": 31
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "n-96e35e484ff5",
+        "type": "named_reroute_out",
+        "position": {
+          "x": -260,
+          "y": 1250
+        },
+        "data": {
+          "label": "Named Reroute Out",
+          "inputs": [],
+          "outputs": [
+            {
+              "id": "out",
+              "label": "",
+              "hlslType": "any"
+            }
+          ],
+          "channelId": "d5d56ee1464a",
+          "channelLabel": "LSN",
+          "channelColor": "#a78bfa"
+        },
+        "measured": {
+          "width": 66,
+          "height": 31
+        },
+        "selected": false,
+        "dragging": false
+      }
+    ],
+    "edges": [
+      {
+        "id": "e-d170d8e28074",
+        "source": "n-ff33c003eb48",
+        "target": "n-d645070b1143",
+        "sourceHandle": "min",
+        "targetHandle": "Min",
+        "type": "default",
+        "style": {
+          "stroke": "#9fb2ff",
+          "strokeWidth": 1.5
+        },
+        "data": {
+          "hlslType": "float3"
+        },
+        "selected": false
+      },
+      {
+        "id": "e-62664af5bf24",
+        "source": "n-ff33c003eb48",
+        "target": "n-d645070b1143",
+        "sourceHandle": "max",
+        "targetHandle": "Max",
+        "type": "default",
+        "style": {
+          "stroke": "#9fb2ff",
+          "strokeWidth": 1.5
+        },
+        "data": {
+          "hlslType": "float3"
+        },
+        "selected": false
+      },
+      {
+        "id": "e-b6add8932a9b",
+        "source": "n-8aef66b9f374",
+        "target": "n-d645070b1143",
+        "sourceHandle": "value",
+        "targetHandle": "NumPoints",
+        "type": "default",
+        "style": {
+          "stroke": "#a0ff47",
+          "strokeWidth": 1.5
+        },
+        "data": {
+          "hlslType": "uint"
+        },
+        "selected": false
+      },
+      {
+        "id": "e-f9ae66b21f64",
+        "source": "n-2b0d265471c6",
+        "target": "n-7f56f3fd82d9",
+        "sourceHandle": "value",
+        "targetHandle": "b",
+        "type": "default",
+        "style": {
+          "stroke": "#9fb2ff",
+          "strokeWidth": 1.5
+        },
+        "data": {
+          "hlslType": "float3"
+        },
+        "selected": false
+      },
+      {
+        "id": "e-bd2334553699",
+        "source": "n-d645070b1143",
+        "target": "n-6b1dcf9fc677",
+        "sourceHandle": "result",
+        "targetHandle": "worldPos",
+        "type": "default",
+        "style": {
+          "stroke": "#9fb2ff",
+          "strokeWidth": 1.5
+        },
+        "data": {
+          "hlslType": "float3"
+        },
+        "selected": false
+      },
+      {
+        "id": "e-00c42ab0909f",
+        "source": "n-623b338d2460",
+        "target": "n-b3e9b9e74b82",
+        "sourceHandle": "result",
+        "targetHandle": "c0",
+        "type": "default",
+        "style": {
+          "stroke": "#24e2ae",
+          "strokeWidth": 1.5
+        },
+        "data": {
+          "hlslType": "float2",
+          "cast": false
+        },
+        "selected": false
+      },
+      {
+        "id": "e-7cb43b0570c2",
+        "source": "n-6b1dcf9fc677",
+        "target": "n-b3e9b9e74b82",
+        "sourceHandle": "height",
+        "targetHandle": "c1",
+        "type": "default",
+        "style": {
+          "stroke": "#a0ff47",
+          "strokeWidth": 1.5
+        },
+        "data": {
+          "hlslType": "float"
+        },
+        "selected": false
+      },
+      {
+        "id": "e-292bf55c592f",
+        "source": "n-d645070b1143",
+        "target": "n-623b338d2460",
+        "sourceHandle": "result",
+        "targetHandle": "value",
+        "type": "default",
+        "style": {
+          "stroke": "#9fb2ff",
+          "strokeWidth": 1.5
+        },
+        "data": {
+          "hlslType": "float3"
+        },
+        "selected": false
+      },
+      {
+        "id": "e-d0b9b24766b5",
+        "source": "n-b3e9b9e74b82",
+        "target": "n-c31f1fb5d848",
+        "sourceHandle": "result",
+        "targetHandle": "in",
+        "type": "default",
+        "style": {
+          "stroke": "#9fb2ff",
+          "strokeWidth": 1.5
+        },
+        "data": {
+          "hlslType": "float3"
+        },
+        "selected": false
+      },
+      {
+        "id": "e-1231f99c2a31",
+        "source": "n-7f56f3fd82d9",
+        "target": "n-4771cb98ea84",
+        "sourceHandle": "result",
+        "targetHandle": "a",
+        "type": "default",
+        "style": {
+          "stroke": "#a0ff47",
+          "strokeWidth": 1.5
+        },
+        "data": {
+          "hlslType": "float"
+        },
+        "selected": false
+      },
+      {
+        "id": "e-51c2015e9e14",
+        "source": "n-4771cb98ea84",
+        "target": "n-273538006e74",
+        "sourceHandle": "result",
+        "targetHandle": "in",
+        "type": "default",
+        "style": {
+          "stroke": "#940000",
+          "strokeWidth": 1.5
+        },
+        "data": {
+          "hlslType": "bool"
+        },
+        "selected": false
+      },
+      {
+        "id": "e-0ae3bcdded01",
+        "source": "n-b06a9d480d30",
+        "target": "n-7e4061d0fe67",
+        "sourceHandle": "out",
+        "targetHandle": "condition",
+        "type": "default",
+        "style": {
+          "stroke": "#940000",
+          "strokeWidth": 1.5
+        },
+        "data": {
+          "hlslType": "bool"
+        },
+        "selected": false
+      },
+      {
+        "id": "e-4335a5ea2055",
+        "source": "n-67cb9e0c6d53",
+        "target": "n-d9f5958a7baf",
+        "sourceHandle": "out",
+        "targetHandle": "position",
+        "type": "default",
+        "style": {
+          "stroke": "#9fb2ff",
+          "strokeWidth": 1.5
+        },
+        "data": {
+          "hlslType": "float3"
+        },
+        "selected": false
+      },
+      {
+        "id": "e-709f2dd4046d",
+        "source": "n-1eea38e8087b",
+        "target": "n-438f25d18ce9",
+        "sourceHandle": "value",
+        "targetHandle": "in",
+        "type": "default",
+        "style": {
+          "stroke": "#9fb2ff",
+          "strokeWidth": 1.5
+        },
+        "data": {
+          "hlslType": "float3"
+        },
+        "selected": false
+      },
+      {
+        "id": "e-48b6b5b7f1c7",
+        "source": "n-364df36f81a3",
+        "target": "n-d9f5958a7baf",
+        "sourceHandle": "out",
+        "targetHandle": "scale",
+        "type": "default",
+        "style": {
+          "stroke": "#9fb2ff",
+          "strokeWidth": 1.5
+        },
+        "data": {
+          "hlslType": "float3"
+        },
+        "selected": false
+      },
+      {
+        "id": "e-3548cfa53509",
+        "source": "n-715c427dd745",
+        "target": "n-1eea38e8087b",
+        "sourceHandle": "value",
+        "targetHandle": "x",
+        "type": "default",
+        "style": {
+          "stroke": "#a0ff47",
+          "strokeWidth": 1.5
+        },
+        "data": {
+          "hlslType": "float"
+        },
+        "selected": false
+      },
+      {
+        "id": "e-4cd32f662973",
+        "source": "n-715c427dd745",
+        "target": "n-1eea38e8087b",
+        "sourceHandle": "value",
+        "targetHandle": "y",
+        "type": "default",
+        "style": {
+          "stroke": "#a0ff47",
+          "strokeWidth": 1.5
+        },
+        "data": {
+          "hlslType": "float"
+        },
+        "selected": false
+      },
+      {
+        "id": "e-4cf09b37411e",
+        "source": "n-715c427dd745",
+        "target": "n-1eea38e8087b",
+        "sourceHandle": "value",
+        "targetHandle": "z",
+        "type": "default",
+        "style": {
+          "stroke": "#a0ff47",
+          "strokeWidth": 1.5
+        },
+        "data": {
+          "hlslType": "float"
+        },
+        "selected": false
+      },
+      {
+        "id": "e-8abc636c12ad",
+        "source": "n-c82d63b0f91c",
+        "target": "n-98a0f95bb541",
+        "sourceHandle": "result",
+        "targetHandle": "in",
+        "type": "default",
+        "style": {
+          "stroke": "#d4a820",
+          "strokeWidth": 1.5
+        },
+        "data": {
+          "hlslType": "half4"
+        },
+        "selected": false
+      },
+      {
+        "id": "e-a0bb43ee4b42",
+        "source": "n-6b1dcf9fc677",
+        "target": "n-f5d05dfe118d",
+        "sourceHandle": "normal",
+        "targetHandle": "in",
+        "type": "default",
+        "style": {
+          "stroke": "#9fb2ff",
+          "strokeWidth": 1.5
+        },
+        "data": {
+          "hlslType": "float3"
+        }
+      },
+      {
+        "id": "e-b5b320b2bd60",
+        "source": "n-f5d05dfe118d",
+        "target": "n-7f56f3fd82d9",
+        "sourceHandle": "out",
+        "targetHandle": "a",
+        "type": "default",
+        "style": {
+          "stroke": "#9fb2ff",
+          "strokeWidth": 1.5
+        },
+        "data": {
+          "hlslType": "float3"
+        },
+        "selected": false
+      },
+      {
+        "id": "e-126813fd24fd",
+        "source": "n-96e35e484ff5",
+        "target": "n-c82d63b0f91c",
+        "sourceHandle": "out",
+        "targetHandle": "InNormal",
+        "type": "default",
+        "style": {
+          "stroke": "#9fb2ff",
+          "strokeWidth": 1.5
+        },
+        "data": {
+          "hlslType": "float3"
+        },
+        "selected": false
+      },
+      {
+        "id": "e-62211a1b76fb",
+        "source": "n-98a0f95bb541",
+        "target": "n-d9f5958a7baf",
+        "sourceHandle": "out",
+        "targetHandle": "rotation",
+        "type": "cast",
+        "style": {
+          "stroke": "#d4a820",
+          "strokeWidth": 1.5
+        },
+        "data": {
+          "hlslType": "half4",
+          "cast": true,
+          "sourceColor": "#d4a820",
+          "targetColor": "#ffc927",
+          "targetHlslType": "float4",
+          "sourceDim": 4,
+          "targetDim": 4
+        },
+        "selected": false
+      },
+      {
+        "id": "e-be4fdf23afc6",
+        "source": "n-7e4061d0fe67",
+        "target": "n-c82d63b0f91c",
+        "sourceHandle": "exec_out",
+        "targetHandle": "exec_in",
+        "type": "exec",
+        "style": {},
+        "data": {
+          "hlslType": "exec"
+        }
+      },
+      {
+        "id": "e-81e2f9cd2968",
+        "source": "n-c82d63b0f91c",
+        "target": "n-d9f5958a7baf",
+        "sourceHandle": "exec_out",
+        "targetHandle": "exec_in",
+        "type": "exec",
+        "style": {},
+        "data": {
+          "hlslType": "exec"
+        },
+        "selected": false
+      },
+      {
+        "id": "e-a733181ea28c",
+        "source": "n-9d88610027ea",
+        "target": "n-f813f86d056f",
+        "sourceHandle": "exec_out",
+        "targetHandle": "exec_in",
+        "type": "exec",
+        "style": {},
+        "data": {
+          "hlslType": "exec"
+        }
+      }
+    ],
+    "pinConfigs": [
+      {
+        "id": "p-48fe9ef15edf",
+        "name": "LS",
+        "dataType": "landscape",
+        "direction": "input"
+      },
+      {
+        "id": "p-e92075fd125f",
+        "name": "Out",
+        "dataType": "point",
+        "direction": "output"
+      }
+    ]
+  },
+  "libraryRefs": [],
+  "functions": [],
+  "tags": [
+    "Template"
+  ],
+  "kernelType": "PointGenerator",
+  "kernelSettings": {
+    "numElements": 64000
+  }
+}
