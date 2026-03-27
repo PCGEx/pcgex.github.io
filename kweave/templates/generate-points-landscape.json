@@ -1,20 +1,20 @@
 {
-  "id": "e0c2055045e2",
-  "codegenId": "55aac60f003c",
+  "id": "49e52e151fc0",
+  "codegenId": "e1936fdfc5d9",
   "type": "graph",
   "name": "Generate Points (Landscape)",
-  "author": "",
+  "author": "Nebukam",
   "origin": "local",
   "version": 1,
-  "createdAt": 1774532942978,
-  "modifiedAt": 1774538122167,
+  "createdAt": 1774538461042,
+  "modifiedAt": 1774568739765,
   "content": {
     "nodes": [
       {
         "id": "n-6b1dcf9fc677",
         "type": "data/get",
         "position": {
-          "x": -40,
+          "x": 60,
           "y": 720
         },
         "data": {
@@ -64,8 +64,8 @@
         "id": "n-d9f5958a7baf",
         "type": "data/set",
         "position": {
-          "x": 230,
-          "y": 1170
+          "x": 1520,
+          "y": 800
         },
         "data": {
           "label": "Data Set",
@@ -125,8 +125,8 @@
         "id": "n-d645070b1143",
         "type": "cs/call",
         "position": {
-          "x": -330,
-          "y": 720
+          "x": -640,
+          "y": 650
         },
         "data": {
           "label": "Create Grid 2D",
@@ -243,8 +243,8 @@
         "id": "n-ff33c003eb48",
         "type": "pcg/component_bounds",
         "position": {
-          "x": -550,
-          "y": 820
+          "x": -860,
+          "y": 750
         },
         "data": {
           "label": "Component Bounds",
@@ -278,8 +278,8 @@
         "id": "n-8aef66b9f374",
         "type": "const/num_elements",
         "position": {
-          "x": -560,
-          "y": 740
+          "x": -870,
+          "y": 670
         },
         "data": {
           "label": "Num Elements",
@@ -309,7 +309,7 @@
         "id": "n-c31f1fb5d848",
         "type": "named_reroute_in",
         "position": {
-          "x": 430,
+          "x": 570,
           "y": 710
         },
         "data": {
@@ -329,7 +329,7 @@
             }
           ],
           "channelId": "5dcb55ed5a51",
-          "channelLabel": "WP",
+          "channelLabel": "Pos",
           "channelColor": "#a78bfa"
         },
         "measured": {
@@ -343,7 +343,7 @@
         "id": "n-7f56f3fd82d9",
         "type": "math/vecscalar",
         "position": {
-          "x": 290,
+          "x": 390,
           "y": 800
         },
         "data": {
@@ -380,7 +380,7 @@
         "id": "n-2b0d265471c6",
         "type": "const/float3",
         "position": {
-          "x": -40,
+          "x": 60,
           "y": 880
         },
         "data": {
@@ -424,8 +424,8 @@
         "id": "n-7e4061d0fe67",
         "type": "branch/ifBegin",
         "position": {
-          "x": -330,
-          "y": 1170
+          "x": 960,
+          "y": 800
         },
         "data": {
           "label": "If",
@@ -464,8 +464,8 @@
         "id": "n-be8ae6c44ec7",
         "type": "branch/ifEnd",
         "position": {
-          "x": 570,
-          "y": 1170
+          "x": 1860,
+          "y": 800
         },
         "data": {
           "label": "End If",
@@ -493,8 +493,8 @@
         "id": "n-9d88610027ea",
         "type": "branch/elseBegin",
         "position": {
-          "x": -330,
-          "y": 1370
+          "x": 960,
+          "y": 1000
         },
         "data": {
           "label": "Else",
@@ -521,8 +521,8 @@
         "id": "n-9c8ec4a542f8",
         "type": "branch/elseEnd",
         "position": {
-          "x": 570,
-          "y": 1270
+          "x": 1860,
+          "y": 900
         },
         "data": {
           "label": "End Else",
@@ -550,8 +550,8 @@
         "id": "n-6444a528e216",
         "type": "branch/end",
         "position": {
-          "x": -330,
-          "y": 1460
+          "x": 960,
+          "y": 1090
         },
         "data": {
           "label": "End Branch",
@@ -578,7 +578,7 @@
         "id": "n-b3e9b9e74b82",
         "type": "vector/compose",
         "position": {
-          "x": 220,
+          "x": 350,
           "y": 680
         },
         "data": {
@@ -629,7 +629,7 @@
         "id": "n-623b338d2460",
         "type": "vector/mask",
         "position": {
-          "x": -10,
+          "x": 90,
           "y": 630
         },
         "data": {
@@ -666,7 +666,7 @@
         "id": "n-273538006e74",
         "type": "named_reroute_in",
         "position": {
-          "x": 630,
+          "x": 770,
           "y": 830
         },
         "data": {
@@ -686,11 +686,11 @@
             }
           ],
           "channelId": "6b5fc91424b9",
-          "channelLabel": "IsFlat",
+          "channelLabel": "Is On Flat Ground",
           "channelColor": "#f43f5e"
         },
         "measured": {
-          "width": 60,
+          "width": 122,
           "height": 31
         },
         "selected": false,
@@ -700,7 +700,7 @@
         "id": "n-4771cb98ea84",
         "type": "logic/compare",
         "position": {
-          "x": 460,
+          "x": 560,
           "y": 800
         },
         "data": {
@@ -735,39 +735,11 @@
         "dragging": false
       },
       {
-        "id": "n-b06a9d480d30",
-        "type": "named_reroute_out",
-        "position": {
-          "x": -450,
-          "y": 1200
-        },
-        "data": {
-          "label": "Named Reroute Out",
-          "inputs": [],
-          "outputs": [
-            {
-              "id": "out",
-              "label": "",
-              "hlslType": "any"
-            }
-          ],
-          "channelId": "6b5fc91424b9",
-          "channelLabel": "IsFlat",
-          "channelColor": "#f43f5e"
-        },
-        "measured": {
-          "width": 72,
-          "height": 31
-        },
-        "selected": false,
-        "dragging": false
-      },
-      {
         "id": "n-f813f86d056f",
         "type": "point/remove",
         "position": {
-          "x": -20,
-          "y": 1370
+          "x": 1140,
+          "y": 1000
         },
         "data": {
           "label": "Remove Point",
@@ -812,8 +784,8 @@
         "id": "n-67cb9e0c6d53",
         "type": "named_reroute_out",
         "position": {
-          "x": 130,
-          "y": 1220
+          "x": 1420,
+          "y": 850
         },
         "data": {
           "label": "Named Reroute Out",
@@ -826,7 +798,7 @@
             }
           ],
           "channelId": "5dcb55ed5a51",
-          "channelLabel": "WP",
+          "channelLabel": "Pos",
           "channelColor": "#a78bfa"
         },
         "measured": {
@@ -840,8 +812,8 @@
         "id": "n-438f25d18ce9",
         "type": "named_reroute_in",
         "position": {
-          "x": 420,
-          "y": 440
+          "x": 530,
+          "y": 430
         },
         "data": {
           "label": "Named Reroute In",
@@ -860,11 +832,11 @@
             }
           ],
           "channelId": "7634d9904fac",
-          "channelLabel": "WS",
+          "channelLabel": "Scale",
           "channelColor": "#a78bfa"
         },
         "measured": {
-          "width": 51,
+          "width": 60,
           "height": 31
         },
         "selected": false,
@@ -874,8 +846,8 @@
         "id": "n-1eea38e8087b",
         "type": "const/float3",
         "position": {
-          "x": 210,
-          "y": 410
+          "x": 320,
+          "y": 400
         },
         "data": {
           "label": "Float3",
@@ -918,8 +890,8 @@
         "id": "n-364df36f81a3",
         "type": "named_reroute_out",
         "position": {
-          "x": 130,
-          "y": 1260
+          "x": 1420,
+          "y": 890
         },
         "data": {
           "label": "Named Reroute Out",
@@ -932,11 +904,11 @@
             }
           ],
           "channelId": "7634d9904fac",
-          "channelLabel": "WS",
+          "channelLabel": "Scale",
           "channelColor": "#a78bfa"
         },
         "measured": {
-          "width": 63,
+          "width": 72,
           "height": 31
         },
         "selected": false,
@@ -946,8 +918,8 @@
         "id": "n-715c427dd745",
         "type": "const/float",
         "position": {
-          "x": 0,
-          "y": 430
+          "x": 110,
+          "y": 420
         },
         "data": {
           "label": "Float",
@@ -978,8 +950,8 @@
         "id": "n-c82d63b0f91c",
         "type": "cs/call",
         "position": {
-          "x": -140,
-          "y": 1170
+          "x": 1150,
+          "y": 800
         },
         "data": {
           "label": "Quat_From Normal",
@@ -1032,8 +1004,8 @@
         "id": "n-98a0f95bb541",
         "type": "named_reroute_in",
         "position": {
-          "x": 60,
-          "y": 1240
+          "x": 1350,
+          "y": 870
         },
         "data": {
           "label": "Named Reroute In",
@@ -1066,7 +1038,7 @@
         "id": "n-f5d05dfe118d",
         "type": "named_reroute_in",
         "position": {
-          "x": 200,
+          "x": 300,
           "y": 830
         },
         "data": {
@@ -1100,8 +1072,8 @@
         "id": "n-96e35e484ff5",
         "type": "named_reroute_out",
         "position": {
-          "x": -260,
-          "y": 1250
+          "x": 1030,
+          "y": 880
         },
         "data": {
           "label": "Named Reroute Out",
@@ -1123,6 +1095,285 @@
         },
         "selected": false,
         "dragging": false
+      },
+      {
+        "id": "n-8aa487ff7e8e",
+        "type": "noise/jitter",
+        "position": {
+          "x": -310,
+          "y": 720
+        },
+        "data": {
+          "label": "Jitter",
+          "inputs": [
+            {
+              "id": "position",
+              "label": "Seed Pos",
+              "hlslType": "float3"
+            },
+            {
+              "id": "seed",
+              "label": "Seed",
+              "hlslType": "uint",
+              "implicit": true,
+              "hlslDefault": "GetSeed()"
+            },
+            {
+              "id": "value",
+              "label": "Value",
+              "hlslType": "numeric",
+              "noInline": true
+            },
+            {
+              "id": "range",
+              "label": "Range",
+              "hlslType": "float2"
+            },
+            {
+              "id": "rangeX",
+              "label": "Range X",
+              "hlslType": "float2"
+            },
+            {
+              "id": "rangeY",
+              "label": "Range Y",
+              "hlslType": "float2"
+            },
+            {
+              "id": "rangeZ",
+              "label": "Range Z",
+              "hlslType": "float2"
+            },
+            {
+              "id": "rangeW",
+              "label": "Range W",
+              "hlslType": "float2"
+            }
+          ],
+          "outputs": [
+            {
+              "id": "result",
+              "label": "Result",
+              "hlslType": "numeric"
+            }
+          ],
+          "seedMode": "position",
+          "perDimension": false,
+          "addToValue": true,
+          "range": {
+            "x": -20,
+            "y": 20
+          },
+          "rangeX": {
+            "x": -1,
+            "y": 1
+          },
+          "rangeY": {
+            "x": -1,
+            "y": 1
+          },
+          "rangeZ": {
+            "x": -1,
+            "y": 1
+          },
+          "rangeW": {
+            "x": -1,
+            "y": 1
+          },
+          "disabled": false,
+          "dimMask": [
+            true,
+            true,
+            true,
+            true
+          ]
+        },
+        "measured": {
+          "width": 161,
+          "height": 105
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "n-722b6ba8803a",
+        "type": "const/float",
+        "position": {
+          "x": -1090,
+          "y": 1010
+        },
+        "data": {
+          "label": "Float",
+          "inputs": [
+            {
+              "id": "x",
+              "label": "X",
+              "hlslType": "float"
+            }
+          ],
+          "outputs": [
+            {
+              "id": "value",
+              "label": "Value",
+              "hlslType": "float"
+            }
+          ],
+          "x": 20,
+          "comment": "Jitter Range",
+          "commentPinned": true
+        },
+        "measured": {
+          "width": 180,
+          "height": 65
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "n-557a940c2784",
+        "type": "math/arithmetic",
+        "position": {
+          "x": -820,
+          "y": 990
+        },
+        "data": {
+          "label": "Multiply",
+          "inputs": [
+            {
+              "id": "a",
+              "label": "A",
+              "hlslType": "numeric"
+            },
+            {
+              "id": "b",
+              "label": "B",
+              "hlslType": "numeric"
+            }
+          ],
+          "outputs": [
+            {
+              "id": "result",
+              "label": "Result",
+              "hlslType": "numeric"
+            }
+          ],
+          "op": "multiply",
+          "b": -1
+        },
+        "measured": {
+          "width": 142,
+          "height": 85
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "n-3c87c8e95ec6",
+        "type": "vector/compose",
+        "position": {
+          "x": -660,
+          "y": 990
+        },
+        "data": {
+          "label": "Compose",
+          "inputs": [
+            {
+              "id": "c0",
+              "label": "X",
+              "hlslType": "numeric"
+            },
+            {
+              "id": "c1",
+              "label": "Y",
+              "hlslType": "numeric"
+            },
+            {
+              "id": "c2",
+              "label": "Z",
+              "hlslType": "numeric"
+            },
+            {
+              "id": "c3",
+              "label": "W",
+              "hlslType": "numeric"
+            }
+          ],
+          "outputs": [
+            {
+              "id": "result",
+              "label": "Result",
+              "hlslType": "float3"
+            }
+          ],
+          "outputType": "float2",
+          "x": 0,
+          "y": 0,
+          "z": 0,
+          "w": 0
+        },
+        "measured": {
+          "width": 180,
+          "height": 85
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "n-6ed93a48be8e",
+        "type": "reroute",
+        "position": {
+          "x": -360,
+          "y": 760
+        },
+        "data": {
+          "label": "Reroute",
+          "inputs": [
+            {
+              "id": "in",
+              "hlslType": "any"
+            }
+          ],
+          "outputs": [
+            {
+              "id": "out",
+              "hlslType": "any"
+            }
+          ]
+        },
+        "measured": {
+          "width": 8,
+          "height": 8
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "n-835814d8a51c",
+        "type": "reroute",
+        "position": {
+          "x": -74,
+          "y": 760
+        },
+        "data": {
+          "label": "Reroute",
+          "inputs": [
+            {
+              "id": "in",
+              "hlslType": "any"
+            }
+          ],
+          "outputs": [
+            {
+              "id": "out",
+              "hlslType": "any"
+            }
+          ]
+        },
+        "measured": {
+          "width": 8,
+          "height": 8
+        },
+        "selected": false
       }
     ],
     "edges": [
@@ -1191,22 +1442,6 @@
         "selected": false
       },
       {
-        "id": "e-bd2334553699",
-        "source": "n-d645070b1143",
-        "target": "n-6b1dcf9fc677",
-        "sourceHandle": "result",
-        "targetHandle": "worldPos",
-        "type": "default",
-        "style": {
-          "stroke": "#9fb2ff",
-          "strokeWidth": 1.5
-        },
-        "data": {
-          "hlslType": "float3"
-        },
-        "selected": false
-      },
-      {
         "id": "e-00c42ab0909f",
         "source": "n-623b338d2460",
         "target": "n-b3e9b9e74b82",
@@ -1236,22 +1471,6 @@
         },
         "data": {
           "hlslType": "float"
-        },
-        "selected": false
-      },
-      {
-        "id": "e-292bf55c592f",
-        "source": "n-d645070b1143",
-        "target": "n-623b338d2460",
-        "sourceHandle": "result",
-        "targetHandle": "value",
-        "type": "default",
-        "style": {
-          "stroke": "#9fb2ff",
-          "strokeWidth": 1.5
-        },
-        "data": {
-          "hlslType": "float3"
         },
         "selected": false
       },
@@ -1293,22 +1512,6 @@
         "target": "n-273538006e74",
         "sourceHandle": "result",
         "targetHandle": "in",
-        "type": "default",
-        "style": {
-          "stroke": "#940000",
-          "strokeWidth": 1.5
-        },
-        "data": {
-          "hlslType": "bool"
-        },
-        "selected": false
-      },
-      {
-        "id": "e-0ae3bcdded01",
-        "source": "n-b06a9d480d30",
-        "target": "n-7e4061d0fe67",
-        "sourceHandle": "out",
-        "targetHandle": "condition",
         "type": "default",
         "style": {
           "stroke": "#940000",
@@ -1444,7 +1647,8 @@
         },
         "data": {
           "hlslType": "float3"
-        }
+        },
+        "selected": false
       },
       {
         "id": "e-b5b320b2bd60",
@@ -1510,7 +1714,8 @@
         "style": {},
         "data": {
           "hlslType": "exec"
-        }
+        },
+        "selected": false
       },
       {
         "id": "e-81e2f9cd2968",
@@ -1535,6 +1740,185 @@
         "style": {},
         "data": {
           "hlslType": "exec"
+        },
+        "selected": false
+      },
+      {
+        "id": "e-03856a752b4d",
+        "source": "n-722b6ba8803a",
+        "target": "n-557a940c2784",
+        "sourceHandle": "value",
+        "targetHandle": "a",
+        "type": "default",
+        "style": {
+          "stroke": "#a0ff47",
+          "strokeWidth": 1.5
+        },
+        "data": {
+          "hlslType": "float"
+        },
+        "selected": false
+      },
+      {
+        "id": "e-dad5497441e6",
+        "source": "n-557a940c2784",
+        "target": "n-3c87c8e95ec6",
+        "sourceHandle": "result",
+        "targetHandle": "c0",
+        "type": "default",
+        "style": {
+          "stroke": "#a0ff47",
+          "strokeWidth": 1.5
+        },
+        "data": {
+          "hlslType": "float"
+        },
+        "selected": false
+      },
+      {
+        "id": "e-f95d1a481144",
+        "source": "n-722b6ba8803a",
+        "target": "n-3c87c8e95ec6",
+        "sourceHandle": "value",
+        "targetHandle": "c1",
+        "type": "default",
+        "style": {
+          "stroke": "#a0ff47",
+          "strokeWidth": 1.5
+        },
+        "data": {
+          "hlslType": "float"
+        },
+        "selected": false
+      },
+      {
+        "id": "e-9ad6e5ded62e",
+        "source": "n-3c87c8e95ec6",
+        "target": "n-8aa487ff7e8e",
+        "sourceHandle": "result",
+        "targetHandle": "range",
+        "type": "default",
+        "style": {
+          "stroke": "#24e2ae",
+          "strokeWidth": 1.5
+        },
+        "data": {
+          "hlslType": "float2",
+          "cast": false
+        },
+        "selected": false
+      },
+      {
+        "id": "e-ec9b99f0ae72",
+        "source": "n-d645070b1143",
+        "target": "n-6ed93a48be8e",
+        "sourceHandle": "result",
+        "targetHandle": "in",
+        "type": "default",
+        "style": {
+          "stroke": "#9fb2ff",
+          "strokeWidth": 1.5
+        },
+        "data": {
+          "hlslType": "float3",
+          "cast": false
+        },
+        "selected": false
+      },
+      {
+        "id": "e-be6eeca56b30",
+        "source": "n-6ed93a48be8e",
+        "target": "n-8aa487ff7e8e",
+        "sourceHandle": "out",
+        "targetHandle": "position",
+        "type": "default",
+        "style": {
+          "stroke": "#9fb2ff",
+          "strokeWidth": 1.5
+        },
+        "data": {
+          "hlslType": "float3",
+          "cast": false
+        },
+        "selected": false
+      },
+      {
+        "id": "e-c3084ba4dff7",
+        "source": "n-6ed93a48be8e",
+        "target": "n-8aa487ff7e8e",
+        "sourceHandle": "out",
+        "targetHandle": "value",
+        "type": "default",
+        "style": {
+          "stroke": "#9fb2ff",
+          "strokeWidth": 1.5
+        },
+        "data": {
+          "hlslType": "float3"
+        },
+        "selected": false
+      },
+      {
+        "id": "e-a4e62f743adb",
+        "source": "n-8aa487ff7e8e",
+        "target": "n-835814d8a51c",
+        "sourceHandle": "result",
+        "targetHandle": "in",
+        "type": "default",
+        "style": {
+          "stroke": "#9fb2ff",
+          "strokeWidth": 1.5
+        },
+        "data": {
+          "hlslType": "float3",
+          "cast": false
+        },
+        "selected": false
+      },
+      {
+        "id": "e-bf6e78bb5b9c",
+        "source": "n-835814d8a51c",
+        "target": "n-6b1dcf9fc677",
+        "sourceHandle": "out",
+        "targetHandle": "worldPos",
+        "type": "default",
+        "style": {
+          "stroke": "#9fb2ff",
+          "strokeWidth": 1.5
+        },
+        "data": {
+          "hlslType": "float3",
+          "cast": false
+        }
+      },
+      {
+        "id": "e-f9e65fcb1340",
+        "source": "n-835814d8a51c",
+        "target": "n-623b338d2460",
+        "sourceHandle": "out",
+        "targetHandle": "value",
+        "type": "default",
+        "style": {
+          "stroke": "#9fb2ff",
+          "strokeWidth": 1.5
+        },
+        "data": {
+          "hlslType": "float3"
+        }
+      },
+      {
+        "id": "e-7981b31e7391",
+        "source": "n-273538006e74",
+        "target": "n-7e4061d0fe67",
+        "sourceHandle": "out",
+        "targetHandle": "condition",
+        "type": "default",
+        "style": {
+          "stroke": "#940000",
+          "strokeWidth": 1.5
+        },
+        "data": {
+          "hlslType": "bool"
         }
       }
     ],
@@ -1549,17 +1933,16 @@
         "id": "p-e92075fd125f",
         "name": "Out",
         "dataType": "point",
-        "direction": "output"
+        "direction": "output",
+        "multiData": false
       }
     ]
   },
   "libraryRefs": [],
   "functions": [],
-  "tags": [
-    "Template"
-  ],
+  "tags": [],
   "kernelType": "PointGenerator",
   "kernelSettings": {
-    "numElements": 64000
+    "numElements": 8192
   }
 }
