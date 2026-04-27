@@ -1,4 +1,4 @@
-// KWEAVE_NOISE_VERSION 1
+// KWEAVE_NOISE_VERSION 2
 
 // ====== Noise Math (Shared Utilities) ======
 
@@ -18,10 +18,14 @@ uint KweaveHash32(int x, int y, int z)
     return h;
 }
 
-// Hash to [0,1]
+// Hash to [0,1)
+// Bit-level mantissa trick: stuff the top 23 bits of h directly into the
+// mantissa of a float in [1.0, 2.0), then subtract 1.0. Uniform across the
+// full uint range -- avoids the precision collapse of float(h)/UINT_MAX,
+// where high uints quantize to 256-step floats.
 float KweaveHash32ToFloat01(uint h)
 {
-    return float(h) / 4294967295.0;
+    return asfloat(0x3F800000u | (h >> 9)) - 1.0;
 }
 
 // Convenience: position to [0,1]
