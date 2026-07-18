@@ -1,6 +1,6 @@
 // =============================================================================
 // Kweave Compute Source -- Utility functions for Kweave-generated PCG GPU nodes.
-// KWEAVE_CS_VERSION 3
+// KWEAVE_CS_VERSION 4
 //
 // Managed by Kweave -- do not edit manually if using the Kweave Bridge.
 // These functions are prefixed with "Kweave" to avoid name collisions.
@@ -283,4 +283,45 @@ half4 KweaveQuatFromAxes(half3 PrimaryDir, half3 SecondaryDir, int PrimaryAxis, 
     if (dot(Check, Axes[2]) < 0.0) Axes[ThirdAxis] = -T;
 
     return KweaveQuatFromMatrix3(Axes[0], Axes[1], Axes[2]);
+}
+
+// =============================================================================
+// Transform (float4x4) compose / decompose
+// UE PCG point-transform layout: columns 0-2 are the scaled rotation axes,
+// column 3 is the position. Matches GetPointTransform in UE's
+// PCGDataCollectionDataInterface.ush and the decompose in PCGTransformPoints.usf.
+// =============================================================================
+
+// --- Compose a transform from Position / Rotation (quat) / Scale ---
+float4x4 KweaveMakeTransform(float3 Position, half4 Rotation, float3 Scale)
+{
+    float4x4 M = KweaveQuatToMatrix(Rotation);
+    M._m00_m10_m20 *= Scale.x;
+    M._m01_m11_m21 *= Scale.y;
+    M._m02_m12_m22 *= Scale.z;
+    M._m03_m13_m23 = Position;
+    return M;
+}
+
+// --- Position (translation) from a transform ---
+float3 KweaveTransformPosition(float4x4 M)
+{
+    return M._m03_m13_m23;
+}
+
+// --- Scale from a transform (length of each rotation axis column) ---
+float3 KweaveTransformScale(float4x4 M)
+{
+    return float3(length(M._m00_m10_m20), length(M._m01_m11_m21), length(M._m02_m12_m22));
+}
+
+// --- Rotation (quat) from a transform ---
+// Divides the scale out of the axis columns; near-zero scale is guarded.
+half4 KweaveTransformRotation(float4x4 M)
+{
+    float3 Scale = max(KweaveTransformScale(M), 0.0001);
+    half3 X = half3(M._m00_m10_m20 / Scale.x);
+    half3 Y = half3(M._m01_m11_m21 / Scale.y);
+    half3 Z = half3(M._m02_m12_m22 / Scale.z);
+    return KweaveQuatFromMatrix3(X, Y, Z);
 }
