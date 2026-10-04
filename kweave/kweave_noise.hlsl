@@ -1,4 +1,4 @@
-// KWEAVE_NOISE_VERSION 2
+// KWEAVE_NOISE_VERSION 3
 
 // ====== Noise Math (Shared Utilities) ======
 
@@ -64,36 +64,23 @@ int KweaveHash3DSeed(int x, int y, int z, int seed)
 // ===== Gradient Functions =====
 
 // 3D gradient from hash (16 directions on cube edges)
+//
+//    h: 0 ( 1, 1, 0)   4 ( 1, 0, 1)    8 ( 0, 1, 1)   12 ( 1, 1, 0)
+//       1 (-1, 1, 0)   5 (-1, 0, 1)    9 ( 0,-1, 1)   13 (-1, 1, 0)
+//       2 ( 1,-1, 0)   6 ( 1, 0,-1)   10 ( 0, 1,-1)   14 ( 0,-1, 1)
+//       3 (-1,-1, 0)   7 (-1, 0,-1)   11 ( 0,-1,-1)   15 ( 0,-1,-1)
+//
+// Branchless on purpose. Every Perlin-family sample takes 8 of these with
+// unrelated hashes, so a switch sends neighbouring GPU threads down different
+// cases and the whole wave pays for all of them. Each component is instead
+// read out of two 16-bit masks, bit h of which says whether the component of
+// gradient h is non-zero (NZ) and whether it is negative (NEG).
 float3 KweaveGrad3(int hash)
 {
-    int h = hash & 15;
-    // Encode the 16 gradient directions using bit manipulation
-    float u = (h < 8) ? ((h & 1) ? -1.0 : 1.0) : 0.0;
-    float v = (h < 4) ? 0.0 : ((h == 12 || h == 14) ? ((h & 1) ? -1.0 : 1.0) : (((h >> 1) & 1) ? -1.0 : 1.0));
-    float w = (h < 8) ? (((h >> 1) & 1) ? -1.0 : 1.0) : 0.0;
-
-    // Remap to standard gradient table
-    // Simpler approach: use the standard 16-gradient table encoded as conditions
-    switch(h)
-    {
-        case 0:  return float3( 1, 1, 0);
-        case 1:  return float3(-1, 1, 0);
-        case 2:  return float3( 1,-1, 0);
-        case 3:  return float3(-1,-1, 0);
-        case 4:  return float3( 1, 0, 1);
-        case 5:  return float3(-1, 0, 1);
-        case 6:  return float3( 1, 0,-1);
-        case 7:  return float3(-1, 0,-1);
-        case 8:  return float3( 0, 1, 1);
-        case 9:  return float3( 0,-1, 1);
-        case 10: return float3( 0, 1,-1);
-        case 11: return float3( 0,-1,-1);
-        case 12: return float3( 1, 1, 0);
-        case 13: return float3(-1, 1, 0);
-        case 14: return float3( 0,-1, 1);
-        case 15: return float3( 0,-1,-1);
-        default: return float3( 1, 1, 0);
-    }
+    uint h = (uint)hash & 15u;
+    int3 nz  = int3((0x30FFu >> h) & 1u, (0xFF0Fu >> h) & 1u, (0xCFF0u >> h) & 1u);
+    int3 neg = int3((0x20AAu >> h) & 1u, (0xCA0Cu >> h) & 1u, (0x8CC0u >> h) & 1u);
+    return float3(nz * (1 - 2 * neg));
 }
 
 // Gradient dot product
