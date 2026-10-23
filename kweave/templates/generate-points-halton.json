@@ -1,0 +1,278 @@
+{
+  "id": "13daef8ba487",
+  "codegenId": "1ea863581e04",
+  "type": "graph",
+  "name": "Generate Points (Halton)",
+  "author": "Nebukam",
+  "origin": "local",
+  "version": 1,
+  "createdAt": 1792731154364,
+  "modifiedAt": 1792731154364,
+  "content": {
+    "nodes": [
+      {
+        "id": "n-f05626e2777b",
+        "type": "const/element_index",
+        "position": {
+          "x": -960,
+          "y": 700
+        },
+        "data": {
+          "label": "Element Index"
+        }
+      },
+      {
+        "id": "n-ac8b6dad540b",
+        "type": "noise/halton",
+        "position": {
+          "x": -760,
+          "y": 700
+        },
+        "data": {
+          "label": "Halton Sequence",
+          "outputDim": 2,
+          "index": 0,
+          "seed": 0,
+          "comment": "One sample per element, evenly spread. Seed shifts the whole pattern: give each component its own.",
+          "commentPinned": true
+        }
+      },
+      {
+        "id": "n-9b8bf939ca94",
+        "type": "pcg/component_bounds",
+        "position": {
+          "x": -760,
+          "y": 860
+        },
+        "data": {
+          "label": "Component Bounds"
+        }
+      },
+      {
+        "id": "n-4aa8d9229f4f",
+        "type": "vector/compose",
+        "position": {
+          "x": -540,
+          "y": 700
+        },
+        "data": {
+          "label": "Compose",
+          "outputType": "float3",
+          "x": 0,
+          "y": 0,
+          "z": 0,
+          "w": 0
+        }
+      },
+      {
+        "id": "n-71d0bfb7fe43",
+        "type": "math/lerp",
+        "position": {
+          "x": -340,
+          "y": 780
+        },
+        "data": {
+          "label": "Lerp",
+          "op": "lerp",
+          "alpha": 0.5,
+          "comment": "XY inside the bounds; Z is replaced by the landscape height",
+          "commentPinned": true
+        }
+      },
+      {
+        "id": "n-da437141550f",
+        "type": "data/get",
+        "position": {
+          "x": -120,
+          "y": 800
+        },
+        "data": {
+          "label": "Data Get",
+          "dataAccessor": "get",
+          "enabledAttributes": [],
+          "pinId": "p-8c2c06e39188",
+          "enabledAccessors": [
+            "height"
+          ]
+        }
+      },
+      {
+        "id": "n-dca68662330e",
+        "type": "vector/mask",
+        "position": {
+          "x": -120,
+          "y": 680
+        },
+        "data": {
+          "label": "Mask",
+          "mask": [
+            true,
+            true,
+            false,
+            true
+          ]
+        }
+      },
+      {
+        "id": "n-bc4246ab0302",
+        "type": "vector/compose",
+        "position": {
+          "x": 120,
+          "y": 720
+        },
+        "data": {
+          "label": "Compose",
+          "outputType": "float3",
+          "x": 0,
+          "y": 0,
+          "z": 0,
+          "w": 0
+        }
+      },
+      {
+        "id": "n-aca76ddcf9f2",
+        "type": "data/set",
+        "position": {
+          "x": 340,
+          "y": 720
+        },
+        "data": {
+          "label": "Data Set",
+          "dataAccessor": "set",
+          "enabledAttributes": [],
+          "pinId": "p-f89bf29375d8",
+          "enabledAccessors": [
+            "position"
+          ]
+        }
+      }
+    ],
+    "edges": [
+      {
+        "id": "e-f39e9aa0f52d",
+        "source": "n-f05626e2777b",
+        "sourceHandle": "value",
+        "target": "n-ac8b6dad540b",
+        "targetHandle": "index",
+        "data": {
+          "hlslType": "uint"
+        }
+      },
+      {
+        "id": "e-e338e3533fe4",
+        "source": "n-ac8b6dad540b",
+        "sourceHandle": "result",
+        "target": "n-4aa8d9229f4f",
+        "targetHandle": "c0",
+        "data": {
+          "hlslType": "float2",
+          "cast": false
+        }
+      },
+      {
+        "id": "e-dc98dfdbbc25",
+        "source": "n-9b8bf939ca94",
+        "sourceHandle": "min",
+        "target": "n-71d0bfb7fe43",
+        "targetHandle": "a",
+        "data": {
+          "hlslType": "float3"
+        }
+      },
+      {
+        "id": "e-af79ca70d96c",
+        "source": "n-9b8bf939ca94",
+        "sourceHandle": "max",
+        "target": "n-71d0bfb7fe43",
+        "targetHandle": "b",
+        "data": {
+          "hlslType": "float3"
+        }
+      },
+      {
+        "id": "e-2ba72b208633",
+        "source": "n-4aa8d9229f4f",
+        "sourceHandle": "result",
+        "target": "n-71d0bfb7fe43",
+        "targetHandle": "alpha",
+        "data": {
+          "hlslType": "float3"
+        }
+      },
+      {
+        "id": "e-e69b94ff4d01",
+        "source": "n-71d0bfb7fe43",
+        "sourceHandle": "result",
+        "target": "n-da437141550f",
+        "targetHandle": "worldPos",
+        "data": {
+          "hlslType": "float3",
+          "cast": false
+        }
+      },
+      {
+        "id": "e-7497c5f237a1",
+        "source": "n-71d0bfb7fe43",
+        "sourceHandle": "result",
+        "target": "n-dca68662330e",
+        "targetHandle": "value",
+        "data": {
+          "hlslType": "float3"
+        }
+      },
+      {
+        "id": "e-b73e1d00e818",
+        "source": "n-dca68662330e",
+        "sourceHandle": "result",
+        "target": "n-bc4246ab0302",
+        "targetHandle": "c0",
+        "data": {
+          "hlslType": "float2",
+          "cast": false
+        }
+      },
+      {
+        "id": "e-0784192904b5",
+        "source": "n-da437141550f",
+        "sourceHandle": "height",
+        "target": "n-bc4246ab0302",
+        "targetHandle": "c1",
+        "data": {
+          "hlslType": "float"
+        }
+      },
+      {
+        "id": "e-4b06cc83e4f6",
+        "source": "n-bc4246ab0302",
+        "sourceHandle": "result",
+        "target": "n-aca76ddcf9f2",
+        "targetHandle": "position",
+        "data": {
+          "hlslType": "float3"
+        }
+      }
+    ],
+    "pinConfigs": [
+      {
+        "id": "p-8c2c06e39188",
+        "name": "LS",
+        "dataType": "landscape",
+        "direction": "input"
+      },
+      {
+        "id": "p-f89bf29375d8",
+        "name": "Out",
+        "dataType": "point",
+        "direction": "output",
+        "multiData": false
+      }
+    ]
+  },
+  "libraryRefs": [],
+  "functions": [],
+  "tags": [],
+  "kernelType": "PointGenerator",
+  "kernelSettings": {
+    "numElements": 8192
+  }
+}

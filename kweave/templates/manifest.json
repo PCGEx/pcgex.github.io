@@ -7,6 +7,14 @@
       "file": "generate-points-landscape.json",
       "type": "graph",
       "kernelType": "PointGenerator"
+    },
+    {
+      "id": "generate-points-halton",
+      "name": "Generate Points (Halton)",
+      "description": "Scatter points evenly across the component with a Halton sequence and drop them onto the landscape.",
+      "file": "generate-points-halton.json",
+      "type": "graph",
+      "kernelType": "PointGenerator"
     }
   ]
 }

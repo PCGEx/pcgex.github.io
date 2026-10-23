@@ -1,4 +1,4 @@
-// KWEAVE_NOISE_VERSION 3
+// KWEAVE_NOISE_VERSION 4
 
 // ====== Noise Math (Shared Utilities) ======
 
@@ -1216,5 +1216,131 @@ float3 KweaveNoiseMarble3(float3 Position, float Frequency, int Seed, float Vein
         KweaveNoiseMarble(Position, Frequency, Seed, VeinFrequency, TurbulenceStrength),
         KweaveNoiseMarble(Position, Frequency, Seed + 1000, VeinFrequency, TurbulenceStrength),
         KweaveNoiseMarble(Position, Frequency, Seed + 2000, VeinFrequency, TurbulenceStrength)
+    );
+}
+
+// ====== Quasi-Random Sequences ======
+//
+// Low-discrepancy sequences read by an integer index: every prefix of the
+// sequence covers [0,1) evenly, so the n-th sample lands in a gap the first
+// n-1 left. Fed ElementIndex in a generator kernel they scatter points
+// without the clumps of white noise or the rows of a grid. Every public
+// function returns [0,1) per component; lerp with the bounds to place it.
+//
+// Seed: a Cranley-Patterson rotation -- the whole sequence shifted on the
+// torus by a hash of the seed, one offset per dimension. A shift keeps the
+// low-discrepancy property, and gives each seed its own pattern (two
+// components with the same bounds would otherwise scatter identically).
+// Seed 0 is the textbook sequence, unshifted.
+//
+// Values are converted from 32-bit fixed point through their top 24 bits
+// (x / 256 scaled by 2^-24): exact in a float, and never rounds up to 1.0
+// as (float)x * 2^-32 can near the top of the range.
+
+static const float KWEAVE_FIXED24_TO_FLOAT = 5.9604644775390625e-08; // 2^-24
+
+// Radical inverse of Index in the given base: the digits of Index mirrored
+// across the point. Base must be a prime (2, 3, 5, 7, ...); base 2 has a
+// bit-reversal shortcut in KweaveRadicalInverse2.
+float KweaveRadicalInverse(uint Index, uint Base)
+{
+    float r = 0.0;
+    float f = 1.0;
+    float baseInv = 1.0 / (float)Base;
+    while (Index > 0u)
+    {
+        f *= baseInv;
+        r += f * (float)(Index % Base);
+        Index /= Base;
+    }
+    return r;
+}
+
+float KweaveRadicalInverse2(uint Index)
+{
+    return (float)(reversebits(Index) / 256u) * KWEAVE_FIXED24_TO_FLOAT;
+}
+
+// Toroidal shift of a [0,1) value by a hash of the seed; seed 0 shifts nothing.
+float KweaveSequenceShift(float u, int Seed, int Dim)
+{
+    float shift = Seed == 0 ? 0.0 : KweaveHash32ToFloat01(KweaveHash32(Seed, Dim, 0));
+    return frac(u + shift);
+}
+
+// ----- Halton -----
+//
+// Radical inverses in the first primes, one base per dimension. Index 0 is
+// skipped: it is the corner of the domain in every base.
+
+float KweaveHalton(uint Index, int Seed)
+{
+    return KweaveSequenceShift(KweaveRadicalInverse2(Index + 1u), Seed, 1);
+}
+
+float2 KweaveHalton2(uint Index, int Seed)
+{
+    uint i = Index + 1u;
+    return float2(
+        KweaveSequenceShift(KweaveRadicalInverse2(i), Seed, 1),
+        KweaveSequenceShift(KweaveRadicalInverse(i, 3u), Seed, 2)
+    );
+}
+
+float3 KweaveHalton3(uint Index, int Seed)
+{
+    uint i = Index + 1u;
+    return float3(
+        KweaveSequenceShift(KweaveRadicalInverse2(i), Seed, 1),
+        KweaveSequenceShift(KweaveRadicalInverse(i, 3u), Seed, 2),
+        KweaveSequenceShift(KweaveRadicalInverse(i, 5u), Seed, 3)
+    );
+}
+
+// ----- R-sequence (Roberts' generalized golden ratio) -----
+//
+// frac(0.5 + Index * a_k), with a_k the inverse k-th power of the
+// generalized golden ratio of the dimension: no loop, two multiplies, and a
+// lower discrepancy than Halton in 2D. The product is taken in 32-bit fixed
+// point, where it wraps exactly; a float loses the fraction once Index * a
+// passes 2^24.
+
+float KweaveRSequenceValue(uint Index, uint Alpha, int Seed, int Dim)
+{
+    uint x = Index * Alpha + 2147483648u; // the 0.5
+    if (Seed != 0)
+    {
+        x += KweaveHash32(Seed, Dim, 0);
+    }
+    return (float)(x / 256u) * KWEAVE_FIXED24_TO_FLOAT;
+}
+
+// 1 / phi_d^k scaled by 2^32, phi_d the real root of x^(d+1) = x + 1.
+static const uint KWEAVE_R1_A1 = 2654435769u; // 0.6180339887 (the golden ratio)
+static const uint KWEAVE_R2_A1 = 3242174889u; // 0.7548776662
+static const uint KWEAVE_R2_A2 = 2447445414u; // 0.5698402910
+static const uint KWEAVE_R3_A1 = 3518319155u; // 0.8191725134
+static const uint KWEAVE_R3_A2 = 2882110345u; // 0.6710436067
+static const uint KWEAVE_R3_A3 = 2360945575u; // 0.5497004779
+
+float KweaveRSequence(uint Index, int Seed)
+{
+    return KweaveRSequenceValue(Index, KWEAVE_R1_A1, Seed, 1);
+}
+
+float2 KweaveRSequence2(uint Index, int Seed)
+{
+    return float2(
+        KweaveRSequenceValue(Index, KWEAVE_R2_A1, Seed, 1),
+        KweaveRSequenceValue(Index, KWEAVE_R2_A2, Seed, 2)
+    );
+}
+
+float3 KweaveRSequence3(uint Index, int Seed)
+{
+    return float3(
+        KweaveRSequenceValue(Index, KWEAVE_R3_A1, Seed, 1),
+        KweaveRSequenceValue(Index, KWEAVE_R3_A2, Seed, 2),
+        KweaveRSequenceValue(Index, KWEAVE_R3_A3, Seed, 3)
     );
 }
